@@ -4,7 +4,7 @@ setTimeout(() => {
     const p1 = document.createElement(`p`);
     p1.innerText = `Hi`;
     div1.append(p1);
-  }, 1000);
+}, 1000);
 
 // 2. Use nested setTimeout methods to complete the following: Have the text of "One" displayed as a p element/tag inside the div with the id of "timeout-nesting" 2 seconds after the page loads. Also, below the "One" p element/tag, have the text of "Two" also displayed as a p element/tag inside the same div 3 seconds after the page loads.
 setTimeout(() => {
@@ -13,24 +13,24 @@ setTimeout(() => {
     p1.innerText = `One`;
     divTM.append(p1);
     setTimeout(() => {
-      const p2 = document.createElement(`p`);
-      p2.innerText = `Two`;
-      divTM.append(p2);
+        const p2 = document.createElement(`p`);
+        p2.innerText = `Two`;
+        divTM.append(p2);
     }, 1000);
-  }, 2000);
+}, 2000);
 
 // 3a.  Use a setInterval method to display a counter in the console that starts at 1 and continues going up one number at a time every second.
 let time = 0;
 const clock = setInterval(() => {
-  console.log(time);
-  time++;
+    console.log(time);
+    time++;
 }, 1000);
 
 
 // 3b. Have the "STOP" button set up so that when it is pressed the setInterval method created in 3a will stop continuously running (HINT: Need to create a variable).
 const stop = document.querySelector(`button`);
 stop.addEventListener(`click`, () => {
-  clearInterval(clock);
+    clearInterval(clock);
 });
 
 // BONUS________________________________________________________________
@@ -42,16 +42,22 @@ div3.append(p4);
 let startingSeconds = 120;
 
 const countdown = setInterval(() => {
-  startingSeconds--;
-  const minutes = Math.floor(startingSeconds / 60);
-  const seconds = startingSeconds % 60;
-  p4.innerText = `${minutes}:${seconds}`;
+    startingSeconds--;
+    const minutes = Math.floor(startingSeconds / 60);
+    const seconds = startingSeconds % 60;
+    //   p4.innerText = `${minutes}:${seconds}`;
 
-  if (startingSeconds === 0){
-      p4.innerText = `TIME IS UP`;
-      clearInterval(countdown);
-  }
- 
+    if (seconds < 10) {
+        p4.innerText = `${minutes}:0${seconds}`;
+    } else {
+        p4.innerText = `${minutes}:${seconds}`;
+    }
+
+    if (startingSeconds === 0) {
+        p4.innerText = `TIME IS UP`;
+        clearInterval(countdown);
+    }
+
 }, 1000);
 
 
